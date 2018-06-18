@@ -1,0 +1,161 @@
+<!-- <div class="row">
+  <div class="col-md-6">
+    <h2>Please enter your information</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+      <form #f="ngForm" novalidate (ngSubmit)="registerUser(f)">
+          <div class="form-group">
+              <label for="first-name">First name</label>
+              <input type="text" class="form-control" id="first-name" placeholder="First name" name="firstName" tmFocus ngModel>              
+          </div>
+          <div class="form-group">
+              <label for="last-name">Last name</label>
+              <input type="text" class="form-control" id="last-name" placeholder="Last name" name="lastName" ngModel>              
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+          	<input id="email" type="text" required name="email" validateEmail class="form-control" placeholder="Email" ngModel  #email="ngModel">
+            <small [hidden]="email.valid || (email.pristine && !submitted)" class="text-danger">Please enter a valid email</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" ngModel>
+          </div>   
+          <div class="form-group">
+             <label for="location">Location</label>
+             <input type="text" class="form-control" id="location" placeholder="Location"  required name="location" ngModel>              
+          </div> 
+
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up</button>
+              <app-spinner [isRunning]="isRequesting"></app-spinner> 
+          </div>
+
+          <div *ngIf="errors" class="alert alert-danger" role="alert">
+              <strong>Oops!</strong> {{errors}}
+            </div>               
+          
+        </form>
+   </div>
+</div> -->
+<mat-sidenav-container>
+<div class="signin-content" >
+    <form #f="ngForm" novalidate (ngSubmit)="registerUser(f)">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-title>Please enter your information</mat-card-title>
+      <mat-card-content>
+         
+                     
+    <div class="form-group">
+    
+            <mat-form-field class="full-width-input">
+                    <input matInput type="text"  id="first-name" placeholder="First name" name="firstName" tmFocus ngModel required>
+                           <mat-error class="help-block">
+                              First name is required
+                           </mat-error>
+            </mat-form-field> 
+</div>
+<div class="form-group">
+        <mat-form-field class="full-width-input">
+                <input matInput type="text"  id="last-name" placeholder="Last name" name="lastName" ngModel required>
+                       <mat-error  class="help-block">
+                          Last name is required
+                       </mat-error>
+             </mat-form-field> 
+</div>
+<div class="form-group">
+    <mat-form-field class="full-width-input">
+            <input matInput id="email" type="text" required name="email" validateEmail placeholder="Email" ngModel  #email="ngModel" required>
+                   <mat-error  [hidden]="email.valid || (email.pristine && !submitted)" class="text-danger">
+                     Please enter a valid email                     
+                   </mat-error>
+         </mat-form-field> 
+</div>
+<div class="form-group">
+    <mat-form-field class="full-width-input">
+            <input matInput type="password"  id="password" name="password" placeholder="Password" ngModel required [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                   <mat-error  class="help-block">
+                      Password is required
+                   </mat-error>
+         </mat-form-field> 
+</div>
+<div class="form-group">
+    <!-- <mat-form-field class="full-width-input" [formGroup]="myGroup">
+            <input matInput  ngModel [matAutocomplete]="autoGroup" type="text" id="location" placeholder="Country" formControlName="countryGroup"  name="location" required >
+
+            <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of countryGroupOptions | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{ name }}
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+                  
+         </mat-form-field>  -->
+         <mat-form-field  class="full-width-input">
+          <input matInput [matDatepicker]="myDatepicker" placeholder="Date of Birth" name="birthDate" id="birthDate" ngModel  required>
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+         <mat-form-field class="full-width-input">
+            <!-- <input  type="text" id="location" placeholder="Country"  name="location" required matInput [formControl]="myControl" [matAutocomplete]="auto3">
+            <mat-autocomplete #auto3="matAutocomplete" [displayWith]="displayFn"> -->
+              <!-- <mat-option *ngFor="let option of filteredOptions | async"  [value]="option">
+                {{ option.name }}
+              </mat-option> -->
+              <mat-select  placeholder="Gender" name="gender"id="gender" ngModel  required>
+                <mat-option *ngFor="let gender of genders" [value]="gender"> {{ gender }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+
+              <mat-form-field class="full-width-input">
+              <mat-select  placeholder="Country" name="location"id="location" ngModel  required>
+                  <mat-option *ngFor="let option of options" [value]="option.name">
+                    {{ option.name }}
+                  </mat-option>
+                </mat-select>
+            <!-- </mat-autocomplete> -->
+          </mat-form-field>
+
+         <!-- <div *ngFor="let group of countyNames">
+            {{group.name}}
+          </div> -->
+</div>
+
+  
+<div>
+    Already have an account? <a [routerLink]="['/login']">Login</a>
+</div>
+
+
+</mat-card-content>
+
+<mat-divider >
+         </mat-divider>
+<mat-card-footer style="height: 70px; background: whitesmoke;">
+     <div style="text-align: center;">                               
+        <div class="form-group">
+            <button  mat-raised-button type="submit" class="btn btn-primary full-width-input" [disabled]="f.invalid || isRequesting">Sign Up</button>           
+            <app-spinner [isRunning]="isRequesting"></app-spinner>             
+        </div>
+        <div *ngIf="errors" class="alert alert-danger" role="alert">
+                <strong>Oops!</strong> {{errors}}
+              </div> 
+          
+       </div>
+       
+</mat-card-footer>
+</mat-card>
+</form>
+</div>
+
+</mat-sidenav-container>

@@ -1,0 +1,61 @@
+<!-- <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">JwtAuthDemo</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      
+        <ul *ngIf="status" class="navbar-nav mr-auto">
+            <li class="nav-item">
+               <a class="nav-link" (click)="logout()" href="#">Logoff</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/dashboard">Dashboard</a> 
+            </li>         
+          </ul>
+
+          <ul *ngIf="!status" class="nav navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/register">Email signup</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/login">Email login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/facebook-login">Facebook signup/login</a>
+            </li>
+          </ul>
+                     
+    </div>
+  </nav>
+</header> -->
+
+
+
+ 
+  
+    <mat-toolbar color="primary" mat-scroll-shrink>
+      <mat-toolbar-row>  
+          <mat-toolbar-row>  
+          <a href="#" mat-button class="mat-icon-fa" routerLink="/"><i class="fa fa-home" aria-hidden="true"></i><b> Home</b></a>
+          <a href="#" *ngIf="status" class="mat-icon-fa"mat-button routerLink="/dashboard"><i class="fa fa-globe" aria-hidden="true"></i><b> Dashboard</b></a>          
+         
+        <span class="Space"> </span>
+        <span *ngIf="!status">
+            <!-- <a href="#" mat-button class="mat-icon-fa"routerLink="/register"><i class="fa fa-user-plus" aria-hidden="true"></i><b> Signup with email</b></a> -->
+            <a href="#" mat-button class="mat-icon-fa"routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><b>Login</b></a>
+            <!-- <a href="#" mat-button class="mat-icon-fa"routerLink="/facebook-login"> <i class="fa fa-facebook" aria-hidden="true"></i><b>Signup/login with facebook</b></a> -->
+            </span>
+          <span *ngIf="UserName !=''">{{UserName}}</span>
+          <a href="#" *ngIf="status"class="mat-icon-fa" mat-raised-button color="primary" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a> 
+           <!-- more HTML template code -->
+           <!-- <button mat-button> {{currentUser?.firstName}}</button> -->
+        </mat-toolbar-row>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <router-outlet></router-outlet> 
+    
+  
+    
+    

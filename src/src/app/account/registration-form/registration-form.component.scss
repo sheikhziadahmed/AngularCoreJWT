@@ -1,0 +1,19 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+   
+  }
+  mat-card-footer{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+   
+  
+  .full-width-input {
+    width: 100%;
+  }
